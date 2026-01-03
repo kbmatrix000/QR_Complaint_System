@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Previous Complaints</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="student-box">
+
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2>My Previous Complaints</h2>
+        <a href="/logout">
+            <button class="btn btn-outline">Logout</button>
+        </a>
+    </div>
+
+    <table class="admin-table">
+        <tr>
+            <th>ID</th>
+            <th>Location</th>
+            <th>Complaint</th>
+            <th>Status</th>
+            <th>Admin Reply</th>
+        </tr>
+
+        {% for c in complaints %}
+        <tr>
+            <td>{{ c[0] }}</td>      <!-- ID -->
+            <td>{{ c[2] }}</td>      <!-- Location -->
+            <td>{{ c[3] }}</td>      <!-- Complaint -->
+            <td>
+                {% if c[4] == "Resolved" %}
+                    <span class="status-resolved">Resolved</span>
+                {% else %}
+                    <span class="status-pending">Pending</span>
+                {% endif %}
+            </td>
+            <td>{{ c[5] if c[5] else "Waiting for response" }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <br>
+    <a href="/complaint?location=General">
+        <button class="btn btn-blue">Raise New Complaint</button>
+    </a>
+
+</div>
+
+</body>
+</html>

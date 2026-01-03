@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="admin-box">
+
+    <div class="admin-header">
+        <h2>Students</h2>
+        <a href="/admin">
+            <button class="btn btn-outline">Back</button>
+        </a>
+    </div>
+
+    <table class="admin-table">
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Class</th>
+            <th>Roll No</th>
+            <th>Student ID</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for s in students %}
+        <tr>
+            <td>{{ s[0] }}</td>
+            <td>{{ s[1] }}</td>
+            <td>{{ s[2] }}</td>
+            <td>{{ s[3] }}</td>
+            <td>{{ s[4] }}</td>
+
+            <td>
+                {% if s[5] == "active" %}
+                    <span class="status-resolved">Active</span>
+                {% else %}
+                    <span class="status-pending">Blocked</span>
+                {% endif %}
+            </td>
+
+            <td>
+                {% if s[5] == "active" %}
+                    <a href="/block_student/{{ s[4] }}">
+                        <button class="btn btn-red">Block</button>
+                    </a>
+                {% else %}
+                    <a href="/unblock_student/{{ s[4] }}">
+                        <button class="btn btn-green">Unblock</button>
+                    </a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Raise Complaint</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="box">
+
+    <div class="box-header">
+        <h2>Raise a Complaint</h2>
+        <a href="/logout">
+            <button class="btn btn-outline">Logout</button>
+        </a>
+    </div>
+
+    <p class="location-text">
+        <b>Location:</b> {{ location }}
+    </p>
+
+    <form method="POST">
+        <textarea name="complaint" placeholder="Describe your issue clearly..." required></textarea>
+
+        <button type="submit" class="btn btn-blue full-width">
+            Submit Complaint
+        </button>
+    </form>
+
+    <div class="divider"></div>
+
+    <a href="/mycomplaints">
+        <button class="btn btn-outline full-width">
+            My Previous Complaints
+        </button>
+    </a>
+
+</div>
+
+</body>
+</html>
